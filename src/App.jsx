@@ -1,36 +1,33 @@
 import { useState } from 'react'
-
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import Anasayfa from './components/Anasayfa';
 import SiparisFormu from './components/SiparisFormu';
 import Onay from './components/Onay';
-
+import './App.css';
 
 function App() {
-  
+  const [siparisData, setSiparisData] = useState(null);
 
   return (
-   <Router>
-     <Switch>
+    <Router>
+      <Switch>
         <Route path="/" exact>
           <Anasayfa />
         </Route>
 
         <Route path="/siparisformu">
-          <SiparisFormu />
+          <SiparisFormu setSiparisData={setSiparisData} />
         </Route>
 
-        <Route path="/onay" >
-          <Onay />
+        <Route path="/onay">
+          <Onay siparisData={siparisData} />
         </Route>
-
-     </Switch>
-   </Router>
+      </Switch>
+    </Router>
   )
 }
 
